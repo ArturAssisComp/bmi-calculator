@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+//Constants:
+const Color cardDefaultColor = Color(0xFF1D1E33);
+const Color bottomContainerColor = Color(0xFFEB1555);
+const double bottomContainerHeight = 80.0;
+
+//Classes;
+
 class InputPage extends StatefulWidget {
   const InputPage({super.key, required this.title});
 
@@ -23,12 +30,12 @@ class _InputPageState extends State<InputPage> {
               children: const [
                 Expanded(
                   child: CustomCard(
-                    color: Color(0xFF1D1E33),
+                    color: cardDefaultColor,
                   ),
                 ),
                 Expanded(
                   child: CustomCard(
-                    color: Color(0xFF1D1E33),
+                    color: cardDefaultColor,
                   ),
                 ),
               ],
@@ -36,7 +43,7 @@ class _InputPageState extends State<InputPage> {
           ),
           const Expanded(
             child: CustomCard(
-              color: Color(0xFF1D1E33),
+              color: cardDefaultColor,
             ),
           ),
           Expanded(
@@ -44,23 +51,30 @@ class _InputPageState extends State<InputPage> {
               children: const [
                 Expanded(
                   child: CustomCard(
-                    color: Color(0xFF1D1E33),
+                    color: cardDefaultColor,
                   ),
                 ),
                 Expanded(
                   child: CustomCard(
-                    color: Color(0xFF1D1E33),
+                    color: cardDefaultColor,
                   ),
                 ),
               ],
             ),
           ),
+          Container(
+            color: bottomContainerColor,
+            margin: const EdgeInsets.only(top: 10),
+            height: bottomContainerHeight,
+            width: double.infinity,
+          )
         ],
       ),
     );
   }
 }
 
+//Aux widgets:
 class CustomCard extends StatelessWidget {
   const CustomCard({
     required this.color,
