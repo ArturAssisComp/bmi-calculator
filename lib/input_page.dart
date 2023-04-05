@@ -29,6 +29,14 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender selectedGender = Gender.male;
 
+  void Function() generateGenderSelectionFunction(Gender selectedGender) {
+    return () {
+      setState(() {
+        this.selectedGender = selectedGender;
+      });
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,38 +49,26 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedGender = Gender.male;
-                      });
-                    },
-                    child: CustomCard(
-                      color: selectedGender == Gender.male
-                          ? defaultCardColor
-                          : inactiveCardColor,
-                      child: const IconWithDescription(
-                        icon: FontAwesomeIcons.mars,
-                        text: 'MALE',
-                      ),
+                  child: CustomCard(
+                    onTapFunc: generateGenderSelectionFunction(Gender.male),
+                    color: selectedGender == Gender.male
+                        ? defaultCardColor
+                        : inactiveCardColor,
+                    child: const IconWithDescription(
+                      icon: FontAwesomeIcons.mars,
+                      text: 'MALE',
                     ),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedGender = Gender.female;
-                      });
-                    },
-                    child: CustomCard(
-                      color: selectedGender == Gender.female
-                          ? defaultCardColor
-                          : inactiveCardColor,
-                      child: const IconWithDescription(
-                        icon: FontAwesomeIcons.venus,
-                        text: 'FEMALE',
-                      ),
+                  child: CustomCard(
+                    onTapFunc: generateGenderSelectionFunction(Gender.female),
+                    color: selectedGender == Gender.female
+                        ? defaultCardColor
+                        : inactiveCardColor,
+                    child: const IconWithDescription(
+                      icon: FontAwesomeIcons.venus,
+                      text: 'FEMALE',
                     ),
                   ),
                 ),
