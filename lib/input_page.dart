@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:bmi_calculator/custom_widgets/icon_with_description.dart';
+import 'package:bmi_calculator/custom_widgets/custom_card.dart';
 
 //Constants:
 const Color cardDefaultColor = Color(0xFF1D1E33);
@@ -31,11 +34,19 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: CustomCard(
                     color: cardDefaultColor,
+                    child: IconWithDescription(
+                      icon: FontAwesomeIcons.mars,
+                      text: 'MALE',
+                    ),
                   ),
                 ),
                 Expanded(
                   child: CustomCard(
                     color: cardDefaultColor,
+                    child: IconWithDescription(
+                      icon: FontAwesomeIcons.venus,
+                      text: 'FEMALE',
+                    ),
                   ),
                 ),
               ],
@@ -69,27 +80,6 @@ class _InputPageState extends State<InputPage> {
             width: double.infinity,
           )
         ],
-      ),
-    );
-  }
-}
-
-//Aux widgets:
-class CustomCard extends StatelessWidget {
-  const CustomCard({
-    required this.color,
-    super.key,
-  });
-
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(10),
       ),
     );
   }
