@@ -101,8 +101,6 @@ class _InputPageState extends State<InputPage> {
                     value: _height.toDouble(),
                     min: kMinHeight.toDouble(),
                     max: kMaxHeight.toDouble(),
-                    activeColor: kSliderActiveColor,
-                    inactiveColor: kSliderInactiveColor,
                     onChanged: (double selectedValue) {
                       setState(() {
                         _height = selectedValue.round();

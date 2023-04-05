@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 const Color kDefaultCardColor = Color(0xFF1D1E33);
 const Color kInactiveCardColor = Color(0xFF111328);
 const Color kBottomContainerColor = Color(0xFFEB1555);
-const Color kSliderActiveColor = Color(0xFFEB1555);
 const Color kSliderInactiveColor = Color(0xFF8D8E98);
+const Color kSliderActiveTrackColor = Colors.white;
+const Color kSliderThumbColor = Color(0xFFEB1555);
+const Color kSliderOverlayColor = Color(0x29EB1555);
 
 const double kBottomContainerHeight = 80.0;
 

@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'BMI Calculator',
-      theme: mainTheme,
+      theme: generateTheme(context: context),
       home: const InputPage(title: 'BMI Calculator'),
     );
   }
