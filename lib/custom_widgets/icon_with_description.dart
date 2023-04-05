@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-const TextStyle textDefaultStyle =
-    TextStyle(fontSize: 18, color: Color(0xFF8D8E98));
+import 'package:bmi_calculator/constants.dart';
 
 class IconWithDescription extends StatelessWidget {
   const IconWithDescription({
@@ -23,7 +21,7 @@ class IconWithDescription extends StatelessWidget {
         ),
         Text(
           text,
-          style: textDefaultStyle,
+          style: kTextDefaultStyle,
         )
       ],
     );

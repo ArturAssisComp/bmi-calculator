@@ -2,18 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/custom_widgets/icon_with_description.dart';
 import 'package:bmi_calculator/custom_widgets/custom_card.dart';
+import 'package:bmi_calculator/constants.dart';
 
 //Enums:
 enum Gender {
   male,
   female,
 }
-
-//Constants:
-const Color defaultCardColor = Color(0xFF1D1E33);
-const Color inactiveCardColor = Color(0xFF111328);
-const Color bottomContainerColor = Color(0xFFEB1555);
-const double bottomContainerHeight = 80.0;
 
 //Classes;
 
@@ -52,8 +47,8 @@ class _InputPageState extends State<InputPage> {
                   child: CustomCard(
                     onTapFunc: generateGenderSelectionFunction(Gender.male),
                     color: selectedGender == Gender.male
-                        ? defaultCardColor
-                        : inactiveCardColor,
+                        ? kDefaultCardColor
+                        : kInactiveCardColor,
                     child: const IconWithDescription(
                       icon: FontAwesomeIcons.mars,
                       text: 'MALE',
@@ -64,8 +59,8 @@ class _InputPageState extends State<InputPage> {
                   child: CustomCard(
                     onTapFunc: generateGenderSelectionFunction(Gender.female),
                     color: selectedGender == Gender.female
-                        ? defaultCardColor
-                        : inactiveCardColor,
+                        ? kDefaultCardColor
+                        : kInactiveCardColor,
                     child: const IconWithDescription(
                       icon: FontAwesomeIcons.venus,
                       text: 'FEMALE',
@@ -77,7 +72,7 @@ class _InputPageState extends State<InputPage> {
           ),
           const Expanded(
             child: CustomCard(
-              color: defaultCardColor,
+              color: kDefaultCardColor,
             ),
           ),
           Expanded(
@@ -85,21 +80,21 @@ class _InputPageState extends State<InputPage> {
               children: const [
                 Expanded(
                   child: CustomCard(
-                    color: defaultCardColor,
+                    color: kDefaultCardColor,
                   ),
                 ),
                 Expanded(
                   child: CustomCard(
-                    color: defaultCardColor,
+                    color: kDefaultCardColor,
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            color: bottomContainerColor,
+            color: kBottomContainerColor,
             margin: const EdgeInsets.only(top: 10),
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
             width: double.infinity,
           )
         ],
