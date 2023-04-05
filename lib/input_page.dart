@@ -3,8 +3,15 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/custom_widgets/icon_with_description.dart';
 import 'package:bmi_calculator/custom_widgets/custom_card.dart';
 
+//Enums:
+enum Gender {
+  male,
+  female,
+}
+
 //Constants:
-const Color cardDefaultColor = Color(0xFF1D1E33);
+const Color defaultCardColor = Color(0xFF1D1E33);
+const Color inactiveCardColor = Color(0xFF111328);
 const Color bottomContainerColor = Color(0xFFEB1555);
 const double bottomContainerHeight = 80.0;
 
@@ -20,6 +27,24 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Color maleCardColor = defaultCardColor;
+  Color femaleCardColor = inactiveCardColor;
+
+  void updateGenderColorSelection(Gender selectedGender) {
+    if (selectedGender == Gender.male) {
+      if (maleCardColor != defaultCardColor) {
+        maleCardColor = defaultCardColor;
+        femaleCardColor = inactiveCardColor;
+      }
+    } else {
+      //female
+      if (femaleCardColor != defaultCardColor) {
+        maleCardColor = inactiveCardColor;
+        femaleCardColor = defaultCardColor;
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,22 +55,36 @@ class _InputPageState extends State<InputPage> {
         children: [
           Expanded(
             child: Row(
-              children: const [
+              children: [
                 Expanded(
-                  child: CustomCard(
-                    color: cardDefaultColor,
-                    child: IconWithDescription(
-                      icon: FontAwesomeIcons.mars,
-                      text: 'MALE',
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        updateGenderColorSelection(Gender.male);
+                      });
+                    },
+                    child: CustomCard(
+                      color: maleCardColor,
+                      child: const IconWithDescription(
+                        icon: FontAwesomeIcons.mars,
+                        text: 'MALE',
+                      ),
                     ),
                   ),
                 ),
                 Expanded(
-                  child: CustomCard(
-                    color: cardDefaultColor,
-                    child: IconWithDescription(
-                      icon: FontAwesomeIcons.venus,
-                      text: 'FEMALE',
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        updateGenderColorSelection(Gender.female);
+                      });
+                    },
+                    child: CustomCard(
+                      color: femaleCardColor,
+                      child: const IconWithDescription(
+                        icon: FontAwesomeIcons.venus,
+                        text: 'FEMALE',
+                      ),
                     ),
                   ),
                 ),
@@ -54,7 +93,7 @@ class _InputPageState extends State<InputPage> {
           ),
           const Expanded(
             child: CustomCard(
-              color: cardDefaultColor,
+              color: defaultCardColor,
             ),
           ),
           Expanded(
@@ -62,12 +101,12 @@ class _InputPageState extends State<InputPage> {
               children: const [
                 Expanded(
                   child: CustomCard(
-                    color: cardDefaultColor,
+                    color: defaultCardColor,
                   ),
                 ),
                 Expanded(
                   child: CustomCard(
-                    color: cardDefaultColor,
+                    color: defaultCardColor,
                   ),
                 ),
               ],
