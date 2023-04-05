@@ -20,62 +20,62 @@ class _InputPageState extends State<InputPage> {
         children: [
           Expanded(
             child: Row(
-              children: [
+              children: const [
                 Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.all(15.0),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF1D1E33),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                  child: CustomCard(
+                    color: Color(0xFF1D1E33),
                   ),
                 ),
                 Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.all(15.0),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF1D1E33),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                  child: CustomCard(
+                    color: Color(0xFF1D1E33),
                   ),
                 ),
               ],
             ),
           ),
-          Expanded(
-            child: Container(
-              margin: const EdgeInsets.all(15.0),
-              decoration: BoxDecoration(
-                color: const Color(0xFF1D1E33),
-                borderRadius: BorderRadius.circular(10),
-              ),
+          const Expanded(
+            child: CustomCard(
+              color: Color(0xFF1D1E33),
             ),
           ),
           Expanded(
             child: Row(
-              children: [
+              children: const [
                 Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.all(15.0),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF1D1E33),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                  child: CustomCard(
+                    color: Color(0xFF1D1E33),
                   ),
                 ),
                 Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.all(15.0),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF1D1E33),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                  child: CustomCard(
+                    color: Color(0xFF1D1E33),
                   ),
                 ),
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class CustomCard extends StatelessWidget {
+  const CustomCard({
+    required this.color,
+    super.key,
+  });
+
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(10),
       ),
     );
   }
