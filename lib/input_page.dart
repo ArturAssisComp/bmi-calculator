@@ -22,12 +22,13 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Gender selectedGender = Gender.male;
+  Gender _selectedGender = Gender.male;
+  int _height = ((kMinHeight + kMaxHeight) / 2).round();
 
   void Function() generateGenderSelectionFunction(Gender selectedGender) {
     return () {
       setState(() {
-        this.selectedGender = selectedGender;
+        _selectedGender = selectedGender;
       });
     };
   }
@@ -39,6 +40,7 @@ class _InputPageState extends State<InputPage> {
         title: Text(widget.title),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Row(
@@ -46,7 +48,7 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: CustomCard(
                     onTapFunc: generateGenderSelectionFunction(Gender.male),
-                    color: selectedGender == Gender.male
+                    color: _selectedGender == Gender.male
                         ? kDefaultCardColor
                         : kInactiveCardColor,
                     child: const IconWithDescription(
@@ -58,7 +60,7 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: CustomCard(
                     onTapFunc: generateGenderSelectionFunction(Gender.female),
-                    color: selectedGender == Gender.female
+                    color: _selectedGender == Gender.female
                         ? kDefaultCardColor
                         : kInactiveCardColor,
                     child: const IconWithDescription(
@@ -70,9 +72,45 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          const Expanded(
+          Expanded(
             child: CustomCard(
               color: kDefaultCardColor,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'HEIGHT',
+                    style: kTextDefaultStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        _height.toString(),
+                        style: kNumberDefaultStyle,
+                      ),
+                      const Text(
+                        'cm',
+                        style: kTextDefaultStyle,
+                      ),
+                    ],
+                  ),
+                  Slider(
+                    value: _height.toDouble(),
+                    min: kMinHeight.toDouble(),
+                    max: kMaxHeight.toDouble(),
+                    activeColor: kSliderActiveColor,
+                    inactiveColor: kSliderInactiveColor,
+                    onChanged: (double selectedValue) {
+                      setState(() {
+                        _height = selectedValue.round();
+                      });
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
           Expanded(
