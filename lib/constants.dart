@@ -16,6 +16,8 @@ const int kMinHeight = 100, kMaxHeight = 250;
 const int kMinWeight = 20, kMaxWeight = 150;
 const int kMinAge = 0, kMaxAge = 100;
 
+const String kAppTitle = 'BMI Calculator';
+
 const TextStyle kTextDefaultStyle = TextStyle(
   fontSize: 18,
   color: Color(0xFF8D8E98),
