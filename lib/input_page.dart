@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/custom_widgets/icon_with_description.dart';
 import 'package:bmi_calculator/custom_widgets/custom_card.dart';
 import 'package:bmi_calculator/constants.dart';
+import 'package:bmi_calculator/custom_widgets/round_icon_button.dart';
 
 //Enums:
 enum Gender {
@@ -24,6 +25,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender _selectedGender = Gender.male;
   int _height = ((kMinHeight + kMaxHeight) / 2).round();
+  int _weight = ((kMinWeight + kMaxWeight) / 2).round();
+  int _age = ((kMinAge + kMaxAge) / 2).round();
 
   void Function() generateGenderSelectionFunction(Gender selectedGender) {
     return () {
@@ -113,15 +116,91 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: Row(
-              children: const [
+              children: [
                 Expanded(
                   child: CustomCard(
                     color: kDefaultCardColor,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'WEIGHT',
+                          style: kTextDefaultStyle,
+                        ),
+                        Text(
+                          _weight.toString(),
+                          style: kNumberDefaultStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  if (_weight > kMinWeight) {
+                                    _weight--;
+                                  }
+                                });
+                              },
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  if (_weight < kMaxWeight) {
+                                    _weight++;
+                                  }
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: CustomCard(
                     color: kDefaultCardColor,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'AGE',
+                          style: kTextDefaultStyle,
+                        ),
+                        Text(
+                          _age.toString(),
+                          style: kNumberDefaultStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  if (_age > kMinAge) {
+                                    _age--;
+                                  }
+                                });
+                              },
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  if (_age < kMaxAge) {
+                                    _age++;
+                                  }
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
