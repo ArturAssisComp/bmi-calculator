@@ -4,6 +4,7 @@ import 'package:bmi_calculator/custom_widgets/icon_with_description.dart';
 import 'package:bmi_calculator/custom_widgets/custom_card.dart';
 import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/custom_widgets/round_icon_button.dart';
+import 'package:bmi_calculator/custom_widgets/bottom_button.dart';
 
 //Enums:
 enum Gender {
@@ -206,25 +207,12 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          BottomButton(
+            text: 'CALCULATE',
             onTap: () {
               Navigator.pushNamed(context, '/results');
             },
-            child: Container(
-              color: kBottomContainerColor,
-              margin: const EdgeInsets.only(top: 10),
-              height: kBottomContainerHeight,
-              width: double.infinity,
-              padding: const EdgeInsets.only(bottom: 15),
-              child: Center(
-                child: Text(
-                  'CALCULATE',
-                  style: kTextDefaultStyle.copyWith(
-                      color: Colors.white, fontSize: 25),
-                ),
-              ),
-            ),
-          )
+          ),
         ],
       ),
     );

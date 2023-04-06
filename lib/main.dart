@@ -20,7 +20,12 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const InputPage(title: kAppTitle),
-        '/results': (context) => const ResultPage(title: kAppTitle),
+        '/results': (context) => const ResultPage(
+              title: kAppTitle,
+              resultNumber: 12.3,
+              resultText: 'hello world',
+              resultWord: 'OVERWEIGHT',
+            ),
       },
     );
   }
