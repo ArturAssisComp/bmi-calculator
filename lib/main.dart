@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/themes.dart';
-import 'package:bmi_calculator/input_page.dart';
-import 'package:bmi_calculator/result_page.dart';
+import 'package:bmi_calculator/pages/input_page.dart';
+import 'package:bmi_calculator/pages/result_page.dart';
 import 'package:bmi_calculator/constants.dart';
 
 void main() {
@@ -20,12 +20,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const InputPage(title: kAppTitle),
-        '/results': (context) => const ResultPage(
-              title: kAppTitle,
-              resultNumber: 12.3,
-              resultText: 'hello world',
-              resultWord: 'OVERWEIGHT',
-            ),
+        '/results': (context) => const ResultPage(title: kAppTitle),
       },
     );
   }

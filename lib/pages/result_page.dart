@@ -4,20 +4,17 @@ import 'package:bmi_calculator/custom_widgets/bottom_button.dart';
 import 'package:bmi_calculator/custom_widgets/custom_card.dart';
 
 class ResultPage extends StatelessWidget {
-  const ResultPage({
-    Key? key,
-    required this.title,
-    required this.resultNumber,
-    required this.resultWord,
-    required this.resultText,
-  }) : super(key: key);
+  const ResultPage({Key? key, required this.title}) : super(key: key);
   final String title;
-  final String resultWord;
-  final double resultNumber;
-  final String resultText;
 
   @override
   Widget build(BuildContext context) {
+    final Map<String, dynamic> args =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+    final String wordResult = args['wordResult'];
+    final double numberResult = args['bmi'];
+    final String textResult = args['textResult'];
+
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -44,7 +41,7 @@ class ResultPage extends StatelessWidget {
                   children: [
                     //Result word
                     Text(
-                      resultWord,
+                      wordResult,
                       textAlign: TextAlign.center,
                       style: kTextDefaultStyle.copyWith(
                         color: Colors.green,
@@ -52,7 +49,7 @@ class ResultPage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      resultNumber.toStringAsFixed(1),
+                      numberResult.toStringAsFixed(1),
                       textAlign: TextAlign.center,
                       style: kNumberDefaultStyle.copyWith(
                         fontWeight: FontWeight.w900,
@@ -60,7 +57,7 @@ class ResultPage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      resultText,
+                      textResult,
                       textAlign: TextAlign.center,
                       style: kTextDefaultStyle.copyWith(
                         fontSize: 25,

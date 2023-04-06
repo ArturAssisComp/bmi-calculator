@@ -5,6 +5,7 @@ import 'package:bmi_calculator/custom_widgets/custom_card.dart';
 import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/custom_widgets/round_icon_button.dart';
 import 'package:bmi_calculator/custom_widgets/bottom_button.dart';
+import 'package:bmi_calculator/functions/bmi_calculator.dart';
 
 //Enums:
 enum Gender {
@@ -210,7 +211,14 @@ class _InputPageState extends State<InputPage> {
           BottomButton(
             text: 'CALCULATE',
             onTap: () {
-              Navigator.pushNamed(context, '/results');
+              BMICalculator calc =
+                  BMICalculator(height: _height, weight: _weight);
+              Navigator.pushNamed(context, '/results',
+                  arguments: <String, dynamic>{
+                    'bmi': calc.bmi,
+                    'textResult': calc.textResult,
+                    'wordResult': calc.wordResult,
+                  });
             },
           ),
         ],
